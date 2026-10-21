@@ -381,7 +381,10 @@ async function createActorWithScvm(s) {
   // create any npcs (containers, followers, creatures, etc)
   const firstName = actor.name.split(" ")[0];
   for (const npcData of s.actors) {
-    npcData.name = `${firstName}'s ${npcData.name}`;
+    npcData.name = game.i18n.format("MB.OwnedNpcName", {
+      owner: firstName,
+      name: npcData.name,
+    });
     const npc = await MBActor.create(npcData);
     npc.sheet.render(true);
   }

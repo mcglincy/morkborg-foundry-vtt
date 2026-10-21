@@ -10,8 +10,11 @@ export async function showScvmDialog(actor) {
   const allowedClasses = await findAllowedClasses();
 
   const classData = allowedClasses.entries().map(([groupName, group]) => {
+    const groupKey = `MB.ScvmfactoryGroup${groupName}`;
     return {
-      groupName,
+      groupName: game.i18n.has(groupKey)
+        ? game.i18n.localize(groupKey)
+        : groupName,
       group: group.map((c) => {
         return {
           name: c.name,
