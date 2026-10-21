@@ -71,6 +71,14 @@
 @font-face {
   font-family: "Deutsch Gothic";
   src: url("../assets/fonts/Deutsch.ttf") format("truetype");
+  unicode-range: U+0000-00BF, U+2000-FFFF;
+}
+/* Deutsch Gothic has no accented glyphs; borrow them from Alegreya */
+@font-face {
+  font-family: "Deutsch Gothic";
+  src: url("../assets/fonts/Alegreya-Bold.ttf") format("truetype");
+  unicode-range: U+00C0-024F;
+  size-adjust: 120%;
 }
 @font-face {
   font-family: "OldNewspaperTypes";
@@ -93,6 +101,14 @@
 @font-face {
   font-family: "Cantebriggia";
   src: url("../assets/fonts/cantebriggia.ttf") format("truetype");
+  unicode-range: U+0000-00BF, U+2000-FFFF;
+}
+/* Cantebriggia has no accented glyphs; borrow them from Alegreya */
+@font-face {
+  font-family: "Cantebriggia";
+  src: url("../assets/fonts/Alegreya-Bold.ttf") format("truetype");
+  unicode-range: U+00C0-024F;
+  size-adjust: 130%;
 }
 @font-face {
   font-family: "FetteTrumpDeutsch";
@@ -115,6 +131,14 @@
 @font-face {
   font-family: "Old Cupboard";
   src: url("../assets/fonts/OldCupboard.otf") format("opentype");
+  unicode-range: U+0000-00BF, U+2000-FFFF;
+}
+/* Old Cupboard has no accented glyphs; borrow them from Alegreya */
+@font-face {
+  font-family: "Old Cupboard";
+  src: url("../assets/fonts/Alegreya-Bold.ttf") format("truetype");
+  unicode-range: U+00C0-024F;
+  size-adjust: 89%;
 }
 /* @import "morkborg/_flex"; */
 .morkborg .window-content {

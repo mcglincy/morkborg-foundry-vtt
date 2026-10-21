@@ -50,7 +50,7 @@
           </div>
           <div class="item-fields">
             <span class="item-field damage-die">{{item.system.damageDie}}</span>
-            <span class="item-field weapon-type">{{item.system.weaponType}}</span>
+            <span class="item-field weapon-type">{{#if (lookup ../config.weaponTypes item.system.weaponType)}}{{localize (lookup ../config.weaponTypes item.system.weaponType)}}{{else}}{{item.system.weaponType}}{{/if}}</span>
           </div>
           <div class="item-buttons">
             <button
