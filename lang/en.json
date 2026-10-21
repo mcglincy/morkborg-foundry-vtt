@@ -88,6 +88,8 @@
   "MB.InitiativeEnemiesBegin": "Enemies Begin",
   "MB.InitiativePlayerCharactersBegin": "Player Characters Begin",
   "MB.Is": "is",
+  "MB.InflictDamage": "Inflict {damage} damage",
+  "MB.TakeDamage": "Take {damage} damage",
   "MB.Inflict": "Inflict",
   "MB.Items": "Items",
   "MB.ItemAgilityDRModifier": "Agility DR Modifier",

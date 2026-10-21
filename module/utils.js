@@ -100,3 +100,18 @@ export function upperCaseFirst(str) {
 export function lowerCaseFirst(str) {
   return str.charAt(0).toLowerCase() + str.slice(1);
 }
+
+/**
+ * "Take 5 damage" / "Inflict 5 damage". Uses a per-language sentence when the
+ * current language provides one (word order differs between languages),
+ * otherwise falls back to "<verb> <n> <damage>".
+ */
+export function damageText(verb, amount) {
+  const key = `MB.${verb}Damage`;
+  if (foundry.utils.getProperty(game.i18n.translations, key)) {
+    return game.i18n.format(key, { damage: amount });
+  }
+  return `${game.i18n.localize(`MB.${verb}`)} ${amount} ${game.i18n.localize(
+    "MB.Damage"
+  )}`;
+}

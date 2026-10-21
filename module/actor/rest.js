@@ -1,7 +1,7 @@
 import { rollOmens } from "./omens.js";
 import { rollPowersPerDay } from "./powers.js";
 import { diceSound } from "../dice.js";
-import { showRollResult } from "../utils.js";
+import { damageText, showRollResult } from "../utils.js";
 
 /**
  * @param {*} restLength "short" or "long"
@@ -77,10 +77,7 @@ async function rollStarvation(actor) {
     "d4",
     actor.getRollData(),
     game.i18n.localize("MB.Starvation"),
-    (roll) =>
-      `${game.i18n.localize("MB.Take")} ${roll.total} ${game.i18n.localize(
-        "MB.Damage"
-      )}`
+    (roll) => damageText("Take", roll.total)
   );
   const newHP = actor.system.hp.value - roll.total;
   await actor.update({ ["system.hp.value"]: newHP });
@@ -92,10 +89,7 @@ async function rollInfection(actor) {
     "d6",
     actor.getRollData(),
     game.i18n.localize("MB.Infection"),
-    (roll) =>
-      `${game.i18n.localize("MB.Take")} ${roll.total} ${game.i18n.localize(
-        "MB.Damage"
-      )}`
+    (roll) => damageText("Take", roll.total)
   );
   const newHP = actor.system.hp.value - roll.total;
   await actor.update({ ["system.hp.value"]: newHP });

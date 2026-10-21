@@ -88,6 +88,8 @@
   "MB.InitiativeEnemiesBegin": "Inimigos Começam",
   "MB.InitiativePlayerCharactersBegin": "Personagens de Jogador Começam",
   "MB.Is": "é",
+  "MB.InflictDamage": "Causar {damage} de dano",
+  "MB.TakeDamage": "Receber {damage} de dano",
   "MB.Inflict": "Causar",
   "MB.Items": "Itens",
   "MB.ItemAgilityDRModifier": "Modificador de CD de Agilidade",

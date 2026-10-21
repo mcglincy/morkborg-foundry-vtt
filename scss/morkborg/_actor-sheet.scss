@@ -127,12 +127,28 @@
 
             // keep the name column compact so the weapon type never wraps
             .weapon-name-col {
+              align-items: center;
               flex: 1 1 0;
+              gap: 8px;
               min-width: 0;
+
+              .item-name {
+                margin-top: 0;
+              }
+
+              .ammo-select-col {
+                margin-right: 16px;
+                select.ammo-select {
+                  margin-top: 0;
+                }
+              }
             }
 
             .item-fields {
-              flex: 0 0 auto;
+              align-items: center;
+              flex: 0 0 190px;
+              justify-content: flex-start;
+              margin-top: 0;
               white-space: nowrap;
             }
 
@@ -156,12 +172,15 @@
 
         .weapon-list .item-field {
           &.damage-die {
-            text-align: right;
+            flex: 0 0 40px;
+            margin-right: 10px;
+            text-align: left;
           }
 
           &.weapon-type {
-            text-align: right;
-            min-width: 100px;
+            flex: 0 0 120px;
+            margin-right: 0;
+            text-align: left;
           }
         }
 
