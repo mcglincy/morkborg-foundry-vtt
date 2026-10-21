@@ -198,9 +198,10 @@ async function startingDescriptionLines(clazz) {
       MB.scvmFactory.terribleTraitsTable
     );
     // BrokenBodies and BadHabits end with a period, but TerribleTraits don't.
-    descriptionLine += `${terribleTrait1} and ${terribleTrait2
-      .charAt(0)
-      .toLowerCase()}${terribleTrait2.slice(1)}.`;
+    descriptionLine += game.i18n.format("MB.ScvmTerribleTraits", {
+      first: terribleTrait1,
+      second: `${terribleTrait2.charAt(0).toLowerCase()}${terribleTrait2.slice(1)}`,
+    });
   }
   if (MB.scvmFactory.brokenBodiesTable) {
     const brokenBody = await drawTextFromTableUuid(

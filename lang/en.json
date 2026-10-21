@@ -193,6 +193,7 @@
   "MB.ScvmfactoryGroupFeretory": "Feretory",
   "MB.ScvmfactoryGroupHeretic": "Heretic",
   "MB.ScvmfactoryGroupUncategorized": "Uncategorized",
+  "MB.ScvmTerribleTraits": "{first} and {second}.",
   "MB.ScvmfactoryChooseFromClasses": "Choose from Classes",
   "MB.ScvmfactoryMakeScvm": "Make Scvm",
   "MB.ScvmfactoryToggleAll": "Toggle All",
