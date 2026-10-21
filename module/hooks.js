@@ -83,7 +83,7 @@ function addCreateScvmButton(tab, html, context, options) {
       "afterbegin",
       `
       <div class="header-actions action-buttons flexrow">
-        <button class="create-scvm-button"><i class="fas fa-skull"></i>Create Scvm</button>
+        <button class="create-scvm-button"><i class="fas fa-skull"></i>${game.i18n.localize("MB.CreateScvm")}</button>
       </div>
       `
     );

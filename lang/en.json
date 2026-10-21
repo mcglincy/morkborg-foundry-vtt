@@ -42,6 +42,7 @@
   "MB.ContainerEmptyHelpText": "Drag items into this container.",
   "MB.ContainerHolding": "Holding",
   "MB.ContainerSpace": "Container Space",
+  "MB.CreateScvm": "Create Scvm",
   "MB.CreateNewFeat": "Create New Feat",
   "MB.CreateNewItem": "Create New Item",
   "MB.CreatureArmor": "Armor",
