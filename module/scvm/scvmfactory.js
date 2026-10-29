@@ -22,7 +22,7 @@ export async function createScvmFromClassUuid(classUuid) {
   const clazz = await fromUuid(classUuid);
   if (!clazz) {
     // couldn't find class item, so bail
-    const err = `No class item found with UUID ${classUuid}`;
+    const err = game.i18n.format("MB.ScvmClassNotFound", { uuid: classUuid });
     console.error(err);
     ui.notifications.error(err);
     return;
@@ -198,9 +198,10 @@ async function startingDescriptionLines(clazz) {
       MB.scvmFactory.terribleTraitsTable
     );
     // BrokenBodies and BadHabits end with a period, but TerribleTraits don't.
-    descriptionLine += `${terribleTrait1} and ${terribleTrait2
-      .charAt(0)
-      .toLowerCase()}${terribleTrait2.slice(1)}.`;
+    descriptionLine += game.i18n.format("MB.ScvmTerribleTraits", {
+      first: terribleTrait1,
+      second: `${terribleTrait2.charAt(0).toLowerCase()}${terribleTrait2.slice(1)}`,
+    });
   }
   if (MB.scvmFactory.brokenBodiesTable) {
     const brokenBody = await drawTextFromTableUuid(
@@ -381,7 +382,10 @@ async function createActorWithScvm(s) {
   // create any npcs (containers, followers, creatures, etc)
   const firstName = actor.name.split(" ")[0];
   for (const npcData of s.actors) {
-    npcData.name = `${firstName}'s ${npcData.name}`;
+    npcData.name = game.i18n.format("MB.OwnedNpcName", {
+      owner: firstName,
+      name: npcData.name,
+    });
     const npc = await MBActor.create(npcData);
     npc.sheet.render(true);
   }
@@ -412,7 +416,7 @@ async function updateActorWithScvm(actor, s) {
       actor.sheet.render(true);
     } else {
       ui.notifications.info(
-        `Ask the GM to create an actor for you: ${actorData.name}`,
+        game.i18n.format("MB.ScvmAskGMToCreateActor", { name: actorData.name }),
         { permanent: true }
       );
     }

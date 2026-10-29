@@ -1,5 +1,6 @@
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { hitAutomation, trackAmmo } from "../settings.js";
+import { damageText } from "../utils.js";
 
 /**
  * Attack!
@@ -202,9 +203,7 @@ async function rollAttack(actor, itemId, attackDR, targetArmor) {
     if (dicePromises) {
       await Promise.all(dicePromises);
     }
-    takeDamage = `${game.i18n.localize(
-      "MB.Inflict"
-    )} ${damage} ${game.i18n.localize("MB.Damage")}`;
+    takeDamage = damageText("Inflict", damage);
   } else {
     // MISS!!!
     attackOutcome = game.i18n.localize(

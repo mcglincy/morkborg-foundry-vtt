@@ -50,7 +50,7 @@
           </div>
           <div class="item-fields">
             <span class="item-field damage-die">{{item.system.damageDie}}</span>
-            <span class="item-field weapon-type">{{item.system.weaponType}}</span>
+            <span class="item-field weapon-type">{{#if (lookup ../config.weaponTypes item.system.weaponType)}}{{localize (lookup ../config.weaponTypes item.system.weaponType)}}{{else}}{{item.system.weaponType}}{{/if}}</span>
           </div>
           <div class="item-buttons">
             <button
@@ -68,8 +68,8 @@
               class="item-control item-toggle item-toggle-equipped {{ifPrint item.system.equipped 'equipped'}}"
               title="{{ifPrintElse item.system.equipped (localize 'MB.ItemEquipped') (localize 'MB.ItemUnequipped')}}"
               ><i class="fas fa-shield-alt"></i></a>
-            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+            <a class="item-control item-edit" title="{{localize 'MB.EditItem'}}"><i class="fas fa-edit"></i></a>
+            <a class="item-control item-delete" title="{{localize 'MB.DeleteItem'}}"><i class="fas fa-trash"></i></a>
           </div>
         </li>
       {{/each}}
@@ -131,10 +131,10 @@
             title="{{ifPrintElse data.system.equippedArmor.system.equipped (localize 'MB.ItemEquipped') (localize 'MB.ItemUnequipped')}}"
             ><i class="fas fa-shield-alt"></i
           ></a>
-          <a class="item-control item-edit" title="Edit Item"
+          <a class="item-control item-edit" title="{{localize 'MB.EditItem'}}"
             ><i class="fas fa-edit"></i
           ></a>
-          <a class="item-control item-delete" title="Delete Item"
+          <a class="item-control item-delete" title="{{localize 'MB.DeleteItem'}}"
             ><i class="fas fa-trash"></i
           ></a>
         </div>
@@ -164,10 +164,10 @@
             title="{{ifPrintElse data.system.equippedShield.system.equipped (localize 'MB.ItemEquipped') (localize 'MB.ItemUnequipped')}}"
             ><i class="fas fa-shield-alt"></i
           ></a>
-          <a class="item-control item-edit" title="Edit Item"
+          <a class="item-control item-edit" title="{{localize 'MB.EditItem'}}"
             ><i class="fas fa-edit"></i
           ></a>
-          <a class="item-control item-delete" title="Delete Item"
+          <a class="item-control item-delete" title="{{localize 'MB.DeleteItem'}}"
             ><i class="fas fa-trash"></i
           ></a>
         </div>

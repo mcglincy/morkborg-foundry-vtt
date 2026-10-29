@@ -10,8 +10,11 @@ export async function showScvmDialog(actor) {
   const allowedClasses = await findAllowedClasses();
 
   const classData = allowedClasses.entries().map(([groupName, group]) => {
+    const groupKey = `MB.ScvmfactoryGroup${groupName}`;
     return {
-      groupName,
+      groupName: game.i18n.has(groupKey)
+        ? game.i18n.localize(groupKey)
+        : groupName,
       group: group.map((c) => {
         return {
           name: c.name,
@@ -97,7 +100,7 @@ export default class ScvmDialog extends Application {
     const clazz = await fromUuid(uuid);
     if (!clazz) {
       // couldn't find class item, so bail
-      const err = `No class item ${uuid} found`;
+      const err = game.i18n.format("MB.ScvmClassNotFound", { uuid });
       console.error(err);
       ui.notifications.error(err);
       return;
@@ -112,7 +115,7 @@ export default class ScvmDialog extends Application {
     } catch (err) {
       console.error(err);
       ui.notifications.error(
-        `Error creating ${clazz.name}. Check console for error log.`
+        game.i18n.format("MB.ScvmCreateError", { name: clazz.name })
       );
     }
 

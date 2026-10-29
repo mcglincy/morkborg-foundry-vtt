@@ -1,7 +1,7 @@
 import { MB } from "../config.js";
 import { diceSound, showDice } from "../dice.js";
 import { drawFromTable } from "../packutils.js";
-import { showRollResult } from "../utils.js";
+import { damageText, showRollResult } from "../utils.js";
 
 export async function rollPowersPerDay(actor) {
   const roll = await showRollResult(
@@ -56,9 +56,7 @@ export async function wieldPower(actor) {
     damageRoll = new Roll("1d2");
     await damageRoll.evaluate();
     await showDice(damageRoll);
-    takeDamage = `${game.i18n.localize("MB.Take")} ${
-      damageRoll.total
-    } ${game.i18n.localize("MB.Damage")}, ${game.i18n.localize(
+    takeDamage = `${damageText("Take", damageRoll.total)}, ${game.i18n.localize(
       "MB.WieldAPowerDizzy"
     )}`;
   }

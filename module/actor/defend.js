@@ -1,6 +1,6 @@
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { hitAutomation } from "../settings.js";
-import { showRollResultCard } from "../utils.js";
+import { damageText, showRollResultCard } from "../utils.js";
 
 /**
  * Defend!
@@ -239,9 +239,7 @@ async function rollDefend(actor, defendDR, incomingAttack) {
     if (dicePromises) {
       await Promise.all(dicePromises);
     }
-    takeDamage = `${game.i18n.localize(
-      "MB.Take"
-    )} ${damage} ${game.i18n.localize("MB.Damage")}`;
+    takeDamage = damageText("Take", damage);
   }
 
   const rollResult = {
