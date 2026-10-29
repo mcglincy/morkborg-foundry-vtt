@@ -100,7 +100,7 @@ export default class ScvmDialog extends Application {
     const clazz = await fromUuid(uuid);
     if (!clazz) {
       // couldn't find class item, so bail
-      const err = `No class item ${uuid} found`;
+      const err = game.i18n.format("MB.ScvmClassNotFound", { uuid });
       console.error(err);
       ui.notifications.error(err);
       return;
@@ -115,7 +115,7 @@ export default class ScvmDialog extends Application {
     } catch (err) {
       console.error(err);
       ui.notifications.error(
-        `Error creating ${clazz.name}. Check console for error log.`
+        game.i18n.format("MB.ScvmCreateError", { name: clazz.name })
       );
     }
 

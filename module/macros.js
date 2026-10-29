@@ -35,7 +35,9 @@ export async function createMorkBorgMacro(data, slot) {
   const item = await fromUuid(data.uuid);
   if (!supportedItemTypes.includes(item.type)) {
     return ui.notifications.warn(
-      `Macros only supported for item types: ${supportedItemTypes.join(", ")}`
+      game.i18n.format("MB.MacroItemTypes", {
+        types: supportedItemTypes.join(", "),
+      })
     );
   }
   if (
@@ -44,9 +46,7 @@ export async function createMorkBorgMacro(data, slot) {
       (!item.system.rollFormula && !item.system.rollMacro))
   ) {
     // we only allow rollable feats
-    return ui.notifications.warn(
-      "Macros only supported for feats with roll label and either a formula or macro."
-    );
+    return ui.notifications.warn(game.i18n.localize("MB.MacroFeatRequirements"));
   }
 
   // Create the macro command
