@@ -22,7 +22,7 @@ export async function rollPowersPerDay(actor) {
   });
 }
 
-export async function wieldPower(actor) {
+export async function wieldPower(actor, itemId = null) {
   if (actor.system.powerUses.value < 1) {
     ui.notifications.warn(`${game.i18n.localize("MB.NoPowerUsesRemaining")}!`);
     return;
@@ -87,8 +87,11 @@ export async function wieldPower(actor) {
       outcomeLines: [takeDamage],
     });
   }
+  // the scroll that is being wielded is shown on the card, like a weapon is
+  const scroll = itemId ? actor.items.get(itemId) : null;
   const data = {
     cardTitle: game.i18n.localize("MB.WieldAPower"),
+    items: scroll ? [scroll] : [],
     rollResults,
   };
   const html = await foundry.applications.handlebars.renderTemplate(

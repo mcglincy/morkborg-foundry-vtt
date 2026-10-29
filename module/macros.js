@@ -87,7 +87,7 @@ export async function rollItemMacro(uuid) {
   ) {
     defend(actor, item.id);
   } else if (item.type === MB.itemTypes.scroll) {
-    wieldPower(actor);
+    wieldPower(actor, item.id);
   } else if (item.type === MB.itemTypes.feat) {
     useFeat(actor, item.id);
   }

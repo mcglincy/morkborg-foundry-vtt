@@ -62,13 +62,15 @@ export async function showRollResult(
   rollData,
   cardTitle,
   outcomeTextFn,
-  rollFormula = null
+  rollFormula = null,
+  items = []
 ) {
   const roll = new Roll(dieRoll, rollData);
   await roll.evaluate();
   await showDice(roll);
   const data = {
     cardTitle,
+    items,
     rollResults: [
       {
         rollTitle: rollFormula ?? roll.formula,

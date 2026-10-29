@@ -242,6 +242,7 @@ export class MBCharacterSheet extends MBActorSheet {
 
   _onWieldPowerRoll(event) {
     event.preventDefault();
-    wieldPower(this.actor);
+    const itemId = $(event.currentTarget).parents(".item").data("itemId");
+    wieldPower(this.actor, itemId);
   }
 }

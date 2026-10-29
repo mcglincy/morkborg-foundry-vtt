@@ -1,4 +1,4 @@
-import { showRollResult } from "../utils.js";
+import { showRollResult, showRollResultCard } from "../utils.js";
 
 export async function useFeat(actor, itemId) {
   const item = actor.items.get(itemId);
@@ -7,6 +7,12 @@ export async function useFeat(actor, itemId) {
   }
 
   if (item.system.rollMacro) {
+    // the macro makes its own cards: show which feat was used first
+    await showRollResultCard(actor, {
+      cardTitle: item.system.rollLabel,
+      items: [item],
+      rollResults: [],
+    });
     // roll macro
     if (item.system.rollMacro.includes(",")) {
       // assume it's a CSV string for {pack},{macro name}
@@ -39,7 +45,9 @@ export async function useFeat(actor, itemId) {
       item.system.rollFormula,
       actor.getRollData(),
       item.system.rollLabel,
-      () => ``
+      () => ``,
+      null,
+      [item]
     );
   }
 }
