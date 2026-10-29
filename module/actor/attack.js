@@ -172,10 +172,9 @@ async function rollAttack(actor, itemId, attackDR, targetArmor) {
   const critTarget = itemRollData.critOn ?? 20;
   const isFumble = d20Result <= fumbleTarget;
   const isCrit = d20Result >= critTarget;
-  // nat 1 is always a miss, nat 20 is always a hit, otherwise check vs DR
-  const isHit =
-    attackRoll.total !== 1 &&
-    (attackRoll.total === 20 || attackRoll.total >= attackDR);
+  // a fumble (natural 1) is always a miss, a crit (natural 20) is always a hit,
+  // otherwise check the total against the DR
+  const isHit = !isFumble && (isCrit || attackRoll.total >= attackDR);
 
   let attackOutcome = null;
   let damageRoll = null;
