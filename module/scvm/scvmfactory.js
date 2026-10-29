@@ -313,6 +313,7 @@ async function rollScvmForClass(clazz) {
 
   const items = allDocs.filter((e) => e instanceof MBItem);
   const itemData = items.map((i) => simpleData(i));
+  equipStartingGear(itemData);
   const actors = allDocs.filter((e) => e instanceof MBActor);
   const actorData = actors.map((e) => simpleData(e));
 
@@ -332,6 +333,26 @@ async function rollScvmForClass(clazz) {
     tokenImg: clazz.img,
     toughness,
   };
+}
+
+// Starting weapons, armor and shield come out of the box equipped.
+// Only one armor and one shield can be equipped at a time.
+function equipStartingGear(itemData) {
+  const equippedTypes = new Set();
+  for (const item of itemData) {
+    const single = ["armor", "shield"].includes(item.type);
+    if (!single && item.type !== "weapon") {
+      continue;
+    }
+    if (single) {
+      if (equippedTypes.has(item.type)) {
+        continue;
+      }
+      equippedTypes.add(item.type);
+    }
+    const system = item.system?.toObject?.() ?? { ...item.system };
+    item.system = { ...system, equipped: true };
+  }
 }
 
 function scvmToActorData(s) {
